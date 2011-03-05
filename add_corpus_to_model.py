@@ -12,7 +12,7 @@ ham_folder = sys.argv[3]
 
 def add_any(folder, email_type):
     for email in os.listdir(folder):
-        cmd = [dspam_binary, "--user", username, "--class=spam", "--source=corpus", "--debug"]
+        cmd = [dspam_binary, "--user", username, "--class=%s" % email_type, "--source=corpus", "--debug"]
         filename = folder + "/" + email
         print "adding %s to model as %s" % (filename, email_type)
         email_text = open(filename).read()
